@@ -1,0 +1,60 @@
+{
+  "name": "spirv-val-vsc",
+  "displayName": "spirv-val-vsc",
+  "description": "inline SPIR-V validator for vscode",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:spv-asm"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "spv-asm",
+        "extensions": [".spv.asm"],
+        "aliases": ["SPIR-V Assembly"]
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "SPIR-V Validator Configuration",
+      "properties": {
+        "spirv-val-vsc.spirvAsPath": {
+          "type": "string",
+          "default": "/home/d7ry/repo/spirv-lsp/spirv-tools/build/tools/spirv-as",
+          "description": "Path to the spirv-as executable."
+        },
+        "spirv-val-vsc.spirvValPath": {
+          "type": "string",
+          "default": "/home/d7ry/repo/spirv-lsp/spirv-tools/build/tools/spirv-val",
+          "description": "Path to the spirv-val executable."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.54.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint": "^9.16.0",
+    "typescript": "^5.7.2",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1"
+  }
+}
