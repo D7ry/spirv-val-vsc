@@ -36,7 +36,14 @@
           "description": "Path to the spirv-val executable."
         }
       }
-    }
+    },
+    "grammars": [
+      {
+        "language": "spv-asm",
+        "scopeName": "source.spvasm",
+        "path": "./syntaxes/spvasm.tmLanguage.json"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

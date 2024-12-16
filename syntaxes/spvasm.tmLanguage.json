@@ -1,0 +1,70 @@
+{
+  "name": "SPIR-V Assembly",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#constants"
+    },
+    {
+      "include": "#variables"
+    },
+    {
+      "include": "#ops"
+    },
+    {
+      "include": "#enumerations"
+    },
+    {
+      "include": "#strings"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.character.spvasm",
+          "begin": ";",
+          "end": "$(?=\\n)"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [{
+        "name": "constant.numeric.spvasm",
+        "match": "\\d[\\dxp.+]*"
+      }]
+    },
+    "variables": {
+      "patterns": [{
+        "name": "variable.other.spvasm",
+        "match": "%\\w+"
+      }]
+    },
+    "ops": {
+      "patterns": [
+        {
+          "name": "entity.name.function.spvasm",
+          "match": "Op\\w+"
+        }
+      ]
+    },
+    "enumerations": {
+      "name": "variable.other.enummember.spvasm",
+      "match": "\\w+"
+    },
+    "strings": {
+      "name": "string.quoted.double.spvasm",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.spvasm",
+          "match": "\\\\."
+        }
+      ]
+    }
+  },
+  "scopeName": "source.spvasm"
+}
